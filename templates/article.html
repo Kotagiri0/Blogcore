@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Mostinger{% endblock %}
+
+{% block content %}
+<div class="article-full">
+    <div class="article-header">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-meta">
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div><span class="icon">👤</span> <strong>Author:</strong> {{ author.username }}</div>
+                <div><span class="icon">📧</span> <strong>Email:</strong> {{ author.email }}</div>
+                <div><span class="icon">📅</span> <strong>Created:</strong> {{ article.created_at.strftime('%m/%d/%Y at %H:%M') }}</div>
+                <div><span class="icon">🔄</span> <strong>Updated:</strong> {{ article.updated_at.strftime('%m/%d/%Y at %H:%M') }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="article-content">
+        {{ article.content|replace('\n', '<br>')|safe }}
+    </div>
+    
+    <div class="article-actions">
+        <a href="/" class="btn btn-secondary">
+            <span class="icon">←</span> Back to Posts
+        </a>
+        <a href="/edit/{{ article.id }}" class="btn btn-success">
+            <span class="icon">✏️</span> Edit
+        </a>
+        <form action="/delete/{{ article.id }}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this article?')">
+                <span class="icon">🗑️</span> Delete
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

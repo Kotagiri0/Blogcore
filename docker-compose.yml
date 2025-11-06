@@ -1,0 +1,12 @@
+services:
+  blog-app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./users_data.json:/app/users_data.json
+      - ./articles_data.json:/app/articles_data.json
+      - ./templates:/app/templates
+      - ./assets:/app/assets
+    environment:
+      - PYTHONUNBUFFERED=1

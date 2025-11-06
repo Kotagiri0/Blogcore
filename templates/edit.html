@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Post - Mostinger{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 style="color: #2c3e50; margin-bottom: 30px; text-align: center;">
+        <span class="icon">✏️</span> Edit Post
+    </h1>
+
+    {% if error %}
+    <div class="alert alert-error">
+        <span class="icon">⚠️</span> {{ error }}
+    </div>
+    {% endif %}
+
+    {% if article %}
+    <form method="post">
+        <div class="form-group">
+            <label for="title" class="form-label">
+                <span class="icon">📝</span> Post Title
+            </label>
+            <input type="text" id="title" name="title" value="{{ article.title }}" 
+                   class="form-input" required placeholder="Enter post title">
+        </div>
+        
+        <div class="form-group">
+            <label for="content" class="form-label">
+                <span class="icon">📄</span> Post Content
+            </label>
+            <textarea id="content" name="content" class="form-textarea" 
+                      required placeholder="Write your post content here...">{{ article.content }}</textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <span class="icon">💾</span> Save Changes
+            </button>
+            <a href="/article/{{ article.id }}" class="btn btn-secondary">
+                <span class="icon">↶</span> Cancel
+            </a>
+        </div>
+    </form>
+    {% else %}
+    <div class="alert alert-error">
+        <span class="icon">❌</span> Post not found
+    </div>
+    <div class="text-center">
+        <a href="/" class="btn btn-secondary">
+            <span class="icon">←</span> Back to Posts
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

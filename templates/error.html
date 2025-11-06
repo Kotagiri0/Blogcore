@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Mostinger{% endblock %}
+
+{% block content %}
+<div class="empty-state">
+    <h1 style="color: #e74c3c; margin-bottom: 20px;">
+        <span class="icon">⚠️</span> Error
+    </h1>
+    <div class="alert alert-error" style="max-width: 500px; margin: 0 auto;">
+        {{ error }}
+    </div>
+    <a href="/" class="btn btn-primary mt-20">
+        <span class="icon">🏠</span> Back to Home
+    </a>
+</div>
+{% endblock %}

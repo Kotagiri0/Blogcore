@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Create Post - Mostinger{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 style="color: #2c3e50; margin-bottom: 30px; text-align: center;">
+        <span class="icon">✨</span> Create New Post
+    </h1>
+
+    {% if error %}
+    <div class="alert alert-error">
+        <span class="icon">⚠️</span> {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="form-group">
+            <label for="author_id" class="form-label">
+                <span class="icon">👤</span> Author ID
+            </label>
+            <input type="number" id="author_id" name="author_id" value="{{ author_id }}" 
+                   class="form-input" required placeholder="Enter user ID">
+            <small style="color: #6c757d; font-size: 0.9rem;">User with this ID must exist</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="title" class="form-label">
+                <span class="icon">📝</span> Post Title
+            </label>
+            <input type="text" id="title" name="title" value="{{ title }}" 
+                   class="form-input" required placeholder="Enter post title">
+        </div>
+        
+        <div class="form-group">
+            <label for="content" class="form-label">
+                <span class="icon">📄</span> Post Content
+            </label>
+            <textarea id="content" name="content" class="form-textarea" 
+                      required placeholder="Write your post content here...">{{ content }}</textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <span class="icon">🚀</span> Publish Post
+            </button>
+            <a href="/" class="btn btn-secondary">
+                <span class="icon">↶</span> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

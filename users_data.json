@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@example.com",
+      "username": "testuser",
+      "password": "password123",
+      "created_at": "2025-09-30T20:32:48.468519",
+      "updated_at": "2025-09-30T20:32:48.468522"
+    },
+    {
+      "id": 2,
+      "email": "hsebot@example.com",
+      "username": "hsebot",
+      "password": "password123",
+      "created_at": "2025-09-30T18:21:16.291214",
+      "updated_at": "2025-09-30T18:21:16.291218"
+    }
+  ],
+  "next_id": 3
+}

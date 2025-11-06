@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Mostinger{% endblock %}
+
+{% block content %}
+<div class="text-center mb-20">
+    <h1 style="color: white; font-size: 3rem; margin-bottom: 10px;">📚 Blog Posts</h1>
+    <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">Share knowledge and get inspired</p>
+</div>
+
+{% if articles %}
+<div class="articles-grid">
+    {% for article in articles %}
+    <div class="article-card">
+        <h3>{{ article.title }}</h3>
+        <div class="article-meta">
+            <span class="icon">👤</span>
+            <strong>{{ users[article.user_id].username if users[article.user_id] else 'Unknown Author' }}</strong>
+            <span class="icon">📅</span>
+            {{ article.created_at.strftime('%m/%d/%Y') }}
+        </div>
+        <div class="article-preview">
+            {{ article.content[:150] }}{% if article.content|length > 150 %}...{% endif %}
+        </div>
+        <div class="article-actions">
+            <a href="/article/{{ article.id }}" class="btn btn-primary">
+                <span class="icon">📖</span> Read More
+            </a>
+            <a href="/edit/{{ article.id }}" class="btn btn-success">
+                <span class="icon">✏️</span> Edit
+            </a>
+            <form action="/delete/{{ article.id }}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this article?')">
+                    <span class="icon">🗑️</span> Delete
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h3>📝 No articles yet</h3>
+    <p>Be the first to share your knowledge!</p>
+    <a href="/create" class="btn btn-primary">
+        <span class="icon">✨</span> Create First Post
+    </a>
+</div>
+{% endif %}
+{% endblock %}
