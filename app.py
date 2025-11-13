@@ -260,7 +260,7 @@ class DataManager:
 
 # ===== APPLICATION SETUP =====
 
-app = FastAPI(title="Mostinger Blog Platform", docs_url="/api")
+app = FastAPI(title="Blogcore Blog Platform", docs_url="/api")
 
 # Create folders if they don't exist
 os.makedirs('templates', exist_ok=True)
